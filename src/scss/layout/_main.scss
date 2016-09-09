@@ -4,11 +4,16 @@
 	margin: 0 auto;
 }
 
+header {
+    border-bottom: 5px solid #333;
+    border-top: 5px solid #333;
+}
+
 div#logo {
     width: 4em;
     height: 4em;
     position: absolute;
-    top: 1.4em;
+    top: 2.4em;
     left: 2em;
     transform: rotatez(45deg);
 }

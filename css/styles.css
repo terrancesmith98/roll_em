@@ -369,17 +369,22 @@ h1 {
   padding-left: 4em;
   font-size: 2em;
   margin: 0;
-  font-family: "Raleway", sans-serif; }
+  font-family: "Raleway", sans-serif;
+  text-shadow: 1px 1px 5px grey; }
 
 #wrapper {
   width: 80%;
   margin: 0 auto; }
 
+header {
+  border-bottom: 5px solid #333;
+  border-top: 5px solid #333; }
+
 div#logo {
   width: 4em;
   height: 4em;
   position: absolute;
-  top: 1.4em;
+  top: 2.4em;
   left: 2em;
   -webkit-transform: rotatez(45deg);
           transform: rotatez(45deg); }
