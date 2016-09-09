@@ -370,4 +370,17 @@ h1 {
   margin: 0;
   font-family: "Raleway", sans-serif; }
 
+#wrapper {
+  width: 80%;
+  margin: 0 auto; }
+
+div#logo {
+  width: 4em;
+  height: 4em;
+  position: absolute;
+  top: 1.4em;
+  left: 2em;
+  -webkit-transform: rotatez(45deg);
+          transform: rotatez(45deg); }
+
 /*# sourceMappingURL=styles.css.map */
