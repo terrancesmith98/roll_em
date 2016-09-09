@@ -6,7 +6,16 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     plumber = require('gulp-plumber'),
     tsc = require('gulp-tsc'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    coffee = require('gulp-coffee'),
+    gutil = require('gulp-util');
+
+gulp.task('makeCoffee', function() {
+  gulp.src('src/coffee/*.coffee')
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('js'));
+});
+
 
 gulp.task('compileTs',function(){
     return gulp.src('src/ts/*.ts')
@@ -61,6 +70,7 @@ gulp.task('watchFiles', function () {
     gulp.watch(['src/scss/**/*.scss', './scss/*.scss'], ['compileSass']);
     //gulp.watch(['src/js/main.js'], ['minifyScripts']);
     gulp.watch(['src/ts/*.ts'], ['compileTs']);
+    gulp.watch(['src/coffee/*.coffee'], ['makeCoffee']);
 });
 
 gulp.task('watch', ['watchFiles']);
