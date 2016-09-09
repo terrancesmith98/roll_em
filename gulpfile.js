@@ -5,7 +5,14 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     plumber = require('gulp-plumber'),
+    tsc = require('gulp-tsc'),
     rename = require('gulp-rename');
+
+gulp.task('compileTs',function(){
+    return gulp.src('src/ts/*.ts')
+        .pipe(tsc())
+        .pipe(gulp.dest('js'));
+});
 
 gulp.task('concatScripts', function () {
     'use strict';
@@ -52,7 +59,8 @@ gulp.task('compileSass', function () {
 gulp.task('watchFiles', function () {
     'use strict';
     gulp.watch(['src/scss/**/*.scss', './scss/*.scss'], ['compileSass']);
-    gulp.watch(['src/js/main.js'], ['minifyScripts']);
+    //gulp.watch(['src/js/main.js'], ['minifyScripts']);
+    gulp.watch(['src/ts/*.ts'], ['compileTs']);
 });
 
 gulp.task('watch', ['watchFiles']);
