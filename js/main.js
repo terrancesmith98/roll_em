@@ -1,12 +1,15 @@
 var Die;
 
 Die = (function() {
-  function Die(sides1) {
-    this.sides = sides1;
+  function Die(sides) {
+    this.sides = sides;
   }
 
   Die.prototype.roll = function(quantity) {
-    return alert("You rolled " + quantity + " " + sides + " sided dice.");
+    var result;
+    alert("You rolled " + quantity + " " + this.sides + " sided dice.");
+    result = Math.floor(Math.random() * this.sides + 1) * quantity;
+    return result;
   };
 
   return Die;
