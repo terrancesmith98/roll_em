@@ -1,5 +1,5 @@
 class Die
-  constructor (@sides) ->
+  constructor: (@sides) ->
 
   roll: (quantity) ->
     alert 'You rolled #{quantity} ' + '#{sides} sided dice.'

@@ -1,11 +1,9 @@
 var Die;
 
 Die = (function() {
-  function Die() {}
-
-  constructor(function(sides) {
+  function Die(sides) {
     this.sides = sides;
-  });
+  }
 
   Die.prototype.roll = function(quantity) {
     return alert('You rolled #{quantity} ' + '#{sides} sided dice.');
@@ -14,5 +12,3 @@ Die = (function() {
   return Die;
 
 })();
-
-
