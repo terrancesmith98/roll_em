@@ -7,7 +7,6 @@ Die = (function() {
 
   Die.prototype.roll = function(quantity) {
     var result;
-    alert("You rolled " + quantity + " " + this.sides + " sided dice.");
     result = Math.floor(Math.random() * this.sides + 1) * quantity;
     return result;
   };
