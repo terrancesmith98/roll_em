@@ -7,7 +7,7 @@
 </head>
 <body>
  <header>
-        <div id="logo">
+        <!--<div id="logo">
             <svg viewBox="0 0 400 368.5" style="enable-background:new 0 0 400 368.5;" xml:space="preserve">
                 <style type="text/css">
                     .st0{fill:#CCCCCC;}
@@ -39,51 +39,49 @@
                 <path class="st4" d="M227.5,369c-0.3-8-12.5-13-27.5-13s-27.2,5-27.5,13H227.5z"/>
             </svg>
 
-        </div>
-        <h1>Roll-Em Dice Machine</h1>
+        </div>-->
+        <!--<h1>Roll-Em Dice Machine</h1>-->
  </header>
  
  <div id="wrapper">
      <div id="main">
-         <div id="WebGLCanvas"></div>
+         <div id="WebGLCanvas">
+             <ul id="canvases"></ul>
+         </div>
      </div>
      
  </div> 
  <script src="js/three.min.js"></script>
  <script src="js/main.js"></script> 
  <script>
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100 );
+    // var scene = new THREE.Scene();
+    // var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100 );
+    // var renderer = new THREE.WebGLRenderer();
+    // renderer.setSize( window.innerWidth/ 4, window.innerHeight/ 4 );
+    // document.getElementById('canvases').appendChild(renderer.domElement);
+    // var geometry = new THREE.BoxGeometry( 3, 3, 3 );
+    // var material = new THREE.MeshPhongMaterial( {
+    //      color: 0xffffff,
+    //      //specular: 0x999,
+    //      shininess: 100,
+    //      shading: THREE.SmoothShading
+    //     } );
+    // var light = new THREE.AmbientLight( 0xf7f500, 0.4 );
+    // scene.add( light );
+    // var directionalLight = new THREE.DirectionalLight( 0xfffefe, 0.5 );
+    // scene.add( directionalLight );
+    // var cube = new THREE.Mesh( geometry, material );
+    // scene.add( cube );
+    // camera.position.set(0,0,8);
+    // scene.add(camera);
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth/ 2, window.innerHeight/ 2 );
-    document.getElementById('WebGLCanvas').appendChild(renderer.domElement);
-    var geometry = new THREE.BoxGeometry( 2, 2, 2 );
-    var material = new THREE.MeshPhongMaterial( {
-         color: 0xffffff,
-        //  emissive: 0x000000,
-         specular: 0x999,
-         shininess: 100,
-         shading: THREE.SmoothShading
-        } );
-    var light = new THREE.AmbientLight( 0x995099 );
-    scene.add( light );
-    var directionalLight = new THREE.DirectionalLight( 0xfffefe, 0.5 );
-    scene.add( directionalLight );
-    var cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
-    camera.position.set(0,0,10);
-    //camera.position.z = 4;
-    scene.add(camera);
-
-    function render() {
-        requestAnimationFrame( render );
-        renderer.render( scene, camera );
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        // camera.rotation.z += 0.1;
-    }
-    render();
+    // function render() {
+    //     requestAnimationFrame( render );
+    //     renderer.render( scene, camera );
+    //     cube.rotation.x += 0.01;
+    //     cube.rotation.y += 0.01;
+    // }
+    // render();
  </script>
 </body>
 </html>
