@@ -9,6 +9,6 @@ class Die
         x++
         result = Math.floor((Math.random() * @sides + 1))
         rolls.push result
-      rolls
+        result
 
 
