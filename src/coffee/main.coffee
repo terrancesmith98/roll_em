@@ -3,7 +3,9 @@ class Die
 
   roll: (quantity) ->
     #alert "You rolled #{quantity} #{@sides} sided dice."
-    result = Math.floor((Math.random() * @sides + 1)) * quantity
+    x for x in  quantity by -1
+    
+    result = result + Math.floor((Math.random() * @sides + 1))
     result
 
 

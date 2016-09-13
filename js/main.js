@@ -6,8 +6,12 @@ Die = (function() {
   }
 
   Die.prototype.roll = function(quantity) {
-    var result;
-    result = Math.floor(Math.random() * this.sides + 1) * quantity;
+    var i, result, x;
+    for (i = quantity.length - 1; i >= 0; i += -1) {
+      x = quantity[i];
+      x;
+    }
+    result = result + Math.floor(Math.random() * this.sides + 1);
     return result;
   };
 
