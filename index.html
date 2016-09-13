@@ -45,7 +45,7 @@
  
  <div id="wrapper">
      <div id="main">
-        
+         <div id="WebGLCanvas"></div>
      </div>
      
  </div> 
@@ -53,23 +53,35 @@
  <script src="js/main.js"></script> 
  <script>
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100 );
 
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    document.getElementById('WebGLCanvas').appendChild(renderer.domElement);
+    var geometry = new THREE.BoxGeometry( 2, 2, 2 );
+    var material = new THREE.MeshPhongMaterial( {
+         color: 0xffffff,
+        //  emissive: 0x000000,
+         specular: 0x999,
+         shininess: 100,
+         shading: THREE.SmoothShading
+        } );
+    var light = new THREE.AmbientLight( 0x995099 );
+    scene.add( light );
+    var directionalLight = new THREE.DirectionalLight( 0xfffefe, 0.5 );
+    scene.add( directionalLight );
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
-
-    camera.position.z = 5;
+    camera.position.set(0,0,10);
+    //camera.position.z = 4;
+    scene.add(camera);
 
     function render() {
         requestAnimationFrame( render );
         renderer.render( scene, camera );
-        cube.rotation.x += 0.1;
-        cube.rotation.y += 0.1;
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        // camera.rotation.z += 0.1;
     }
     render();
  </script>

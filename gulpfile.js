@@ -5,34 +5,25 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     plumber = require('gulp-plumber'),
-    tsc = require('gulp-tsc'),
     rename = require('gulp-rename'),
-    coffee = require('gulp-coffee'),
     gutil = require('gulp-util');
 
-gulp.task('makeCoffee', function() {
-  gulp.src('src/coffee/*.coffee')
-    .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest('js'));
-});
+// gulp.task('makeCoffee', function() {
+//   gulp.src('src/coffee/*.coffee')
+//     .pipe(coffee({bare: true}).on('error', gutil.log))
+//     .pipe(gulp.dest('js'));
+// });
 
-
-gulp.task('compileTs',function(){
-    return gulp.src('src/ts/*.ts')
-        .pipe(tsc())
-        .pipe(gulp.dest('js'));
-});
-
-gulp.task('concatScripts', function () {
-    'use strict';
-    return gulp.src([
-        'Documentation/src/js/main.js',        
-    ])
-        .pipe(maps.init())
-        .pipe(concat('app.js'))
-        .pipe(maps.write('./'))
-        .pipe(gulp.dest('js'));
-});
+// gulp.task('concatScripts', function () {
+//     'use strict';
+//     return gulp.src([
+//         'src/js/main.js',        
+//     ])
+//         .pipe(maps.init())
+//         .pipe(concat('app.js'))
+//         .pipe(maps.write('./'))
+//         .pipe(gulp.dest('js'));
+// });
 
 gulp.task('minifyScripts', ["concatScripts"], function () {
     'use strict';
@@ -69,10 +60,8 @@ gulp.task('watchFiles', function () {
     'use strict';
     gulp.watch(['src/scss/**/*.scss', './scss/*.scss'], ['compileSass']);
     //gulp.watch(['src/js/main.js'], ['minifyScripts']);
-    gulp.watch(['src/ts/*.ts'], ['compileTs']);
-    gulp.watch(['src/coffee/*.coffee'], ['makeCoffee']);
 });
 
 gulp.task('watch', ['watchFiles']);
 
-gulp.task('default', ['compileSass', 'minifyScripts', 'makeCoffee']);
+gulp.task('default', ['compileSass', 'minifyScripts']);
