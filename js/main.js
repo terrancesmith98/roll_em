@@ -1,28 +1,8 @@
-
-function renderScene() {
-  var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100);
-    camera.position.set(0,0,8);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth / 4, window.innerHeight / 4);
-    document.getElementById('canvases').appendChild(renderer.domElement);
-    var light = new THREE.AmbientLight( 0xf7f500, 0.4 );
-    scene.add( light );
-    var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-    scene.add(directionalLight);
-  
-    function render() {
-        requestAnimationFrame( render );
-        renderer.render( scene, camera );
-        // cube.rotation.x += 0.01;
-        // cube.rotation.y += 0.01;
-        // camera.rotation.z += 0.1;
-    } render();
-}
+'use strict';
 
 class Die {
-  constructor (sides) {
+  
+  constructor(sides) {
     this.sides = sides;
   }
   
@@ -35,34 +15,53 @@ class Die {
 
 // 3D Modeling //
 class Geometry { 
-  constructor(geometry = {}) {
+  constructor(geometry, material) {
     this.geometry = geometry;
-    this.material = new THREE.MeshPhongMaterial({
-      color: 0xffffff,
-      shininess: 100,
-      shading: THREE.SmoothShading
-    });
+    this.material = material;
   }
 
-  render(geometry, material) { 
-    renderScene()
-    var dieInstance = new THREE.Mesh(geometry, material);
-    scene.add(dieInstance);
-  }
-}
+  renderGeometry() { 
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100 );
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth/ 4, window.innerHeight/ 4 );
+    document.getElementById('canvases').appendChild(renderer.domElement);
+    var light = new THREE.AmbientLight( 0xf7f500, 0.4 );
+    scene.add( light );
+    var directionalLight = new THREE.DirectionalLight( 0xfffefe, 0.5 );
+    scene.add( directionalLight );
+    var geometry = new THREE.BoxGeometry( 3, 3, 3 );
+    var material = new THREE.MeshPhongMaterial( {
+         color: 0xffffff,
+         //specular: 0x999,
+         shininess: 100,
+         shading: THREE.SmoothShading
+        } );
+    
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
+    camera.position.set(0,0,8);
+    scene.add(camera);
+
+    function render() {
+        requestAnimationFrame( render );
+        renderer.render( scene, camera );
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+    }
+    render();
 
 // create 4 Sided Die
 function createTetrahedron() { 
- 
   
 }
 
 // create 6 Sided Die
 function createCube() {
-  var model = new Geometry({
-    geometry: "new THREE.BoxGeometry ( 3, 3, 3 )"
-  })
-  return model;
+    return new Geometry({
+        geometry: "new THREE.BoxGeometry ( 3, 3, 3 )",
+        material: "new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 100, shading: THREE.SmoothShading })"
+    });
 }
 
 // create 8 Sided Die
