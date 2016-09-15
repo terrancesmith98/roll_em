@@ -32,9 +32,7 @@ class Geometry {
     scene.add(light);
     var directionalLight = new THREE.DirectionalLight(0xfffefe, 0.5);
     scene.add(directionalLight);
-    var geometry = this.geometry;
-    var material = this.material;
-    var model = new THREE.Mesh(geometry, material);
+    var model = new THREE.Mesh(this.geometry, this.material);
     scene.add(model);
     
 
@@ -51,8 +49,13 @@ class Geometry {
 
 // create 6 Sided Die
 function createCube() {
-    return new Geometry({
-        geometry: "new THREE.BoxGeometry ( 3, 3, 3 )",
-        material: "new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 100, shading: THREE.SmoothShading })"
-    });
+  return new Geometry(
+    {
+    geometry: "new THREE.BoxGeometry ( 3, 3, 3 )"
+    },
+    {
+      material: "new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 100, shading: THREE.SmoothShading })"
+    }
+        
+    );
 }
