@@ -34,14 +34,6 @@ class Geometry {
     scene.add(directionalLight);
     var geometry = this.geometry;
     var material = this.material;
-    // var geometry = new THREE.BoxGeometry( 3, 3, 3 );
-    // var material = new THREE.MeshPhongMaterial( {
-    //      color: 0xffffff,
-    //      //specular: 0x999,
-    //      shininess: 100,
-    //      shading: THREE.SmoothShading
-    //     } );
-    
     var model = new THREE.Mesh(geometry, material);
     scene.add(model);
     
@@ -49,8 +41,8 @@ class Geometry {
     function render() {
       requestAnimationFrame(render);
       renderer.render(scene, camera);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      model.rotation.x += 0.01;
+      model.rotation.y += 0.01;
     }
     render();
   }
