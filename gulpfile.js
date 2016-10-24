@@ -8,22 +8,17 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     gutil = require('gulp-util');
 
-// gulp.task('makeCoffee', function() {
-//   gulp.src('src/coffee/*.coffee')
-//     .pipe(coffee({bare: true}).on('error', gutil.log))
-//     .pipe(gulp.dest('js'));
-// });
 
-// gulp.task('concatScripts', function () {
-//     'use strict';
-//     return gulp.src([
-//         'src/js/main.js',        
-//     ])
-//         .pipe(maps.init())
-//         .pipe(concat('app.js'))
-//         .pipe(maps.write('./'))
-//         .pipe(gulp.dest('js'));
-// });
+gulp.task('concatScripts', function () {
+    'use strict';
+    return gulp.src([
+        'src/js/main.js',
+    ])
+        .pipe(maps.init())
+        .pipe(concat('app.js'))
+        .pipe(maps.write('./'))
+        .pipe(gulp.dest('js'));
+});
 
 gulp.task('minifyScripts', ["concatScripts"], function () {
     'use strict';
@@ -59,7 +54,7 @@ gulp.task('compileSass', function () {
 gulp.task('watchFiles', function () {
     'use strict';
     gulp.watch(['src/scss/**/*.scss', './scss/*.scss'], ['compileSass']);
-    //gulp.watch(['src/js/main.js'], ['minifyScripts']);
+    gulp.watch(['src/js/main.js'], ['minifyScripts']);
 });
 
 gulp.task('watch', ['watchFiles']);
